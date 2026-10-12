@@ -1,0 +1,46 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.ReportsModel
+@{
+ViewData["Title"] = "Reports";
+}
+
+<div class="dashboard">
+    <h1>Employee Reports</h1>
+    <p>Summary of employee records in the system.</p><div class="report-card">
+    <h2>Total Employees</h2>
+    <div class="report-number">@Model.TotalEmployees</div>
+</div>
+
+<div class="report-card">
+    <h2>Departments</h2>
+
+    @if (Model.Departments.Count == 0)
+    {
+        <p>No departments recorded.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var department in Model.Departments)
+            {
+                <li>@department</li>
+            }
+        </ul>
+    }
+</div>
+
+<br>
+
+<button type="button" onclick="window.location.href='/Reports?handler=ExportCsv'">
+    Export CSV
+</button>
+
+<button type="button" onclick="window.location.href='/Employees'">
+    View Employees
+</button>
+
+<button type="button" onclick="window.location.href='/Dashboard'">
+    Back to Dashboard
+</button>
+
+</div>

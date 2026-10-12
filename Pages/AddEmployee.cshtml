@@ -1,0 +1,48 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.AddEmployeeModel
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<div class="dashboard">
+    <h1>Add Employee</h1>
+    <p>Enter the employee information below.</p>
+
+    <form method="post" class="employee-form">
+
+        <label for="EmployeeId">Employee ID</label>
+        <input type="text"
+               id="EmployeeId"
+               name="EmployeeId"
+               placeholder="Enter employee ID"
+               required />
+
+        <label for="FullName">Full Name</label>
+        <input type="text"
+               id="FullName"
+               name="FullName"
+               placeholder="Enter full name"
+               required />
+
+        <label for="Position">Position</label>
+        <input type="text"
+               id="Position"
+               name="Position"
+               placeholder="Enter position"
+               required />
+
+        <label for="Department">Department</label>
+        <input type="text"
+               id="Department"
+               name="Department"
+               placeholder="Enter department"
+               required />
+
+        <button type="submit">Save Employee</button>
+
+        <button type="button" onclick="window.location.href='/Dashboard'">
+            Back to Dashboard
+        </button>
+
+    </form>
+</div>

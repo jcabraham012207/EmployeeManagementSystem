@@ -1,0 +1,45 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.SubmitReportModel
+@{
+ViewData["Title"] = "Submit Report";
+}
+
+<div class="dashboard">
+    <h1>Submit a Report</h1>
+    <p>Write a workplace report for everyone in the system to view.</p><form method="post">
+    <div class="report-card">
+        <label asp-for="Title">Report Title</label>
+        <input asp-for="Title" class="form-control"
+               placeholder="Enter report title" required />
+    </div>
+
+    <div class="report-card">
+        <label asp-for="Category">Category</label>
+        <select asp-for="Category" class="form-control" required>
+            <option value="">Select a category</option>
+            <option value="Work Update">Work Update</option>
+            <option value="Workplace Concern">Workplace Concern</option>
+            <option value="Incident">Incident</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div class="report-card">
+        <label asp-for="Details">Report Details</label>
+        <textarea asp-for="Details" class="form-control" rows="6"
+                  placeholder="Write your report here..."
+                  required></textarea>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <button type="submit">Submit Report</button>
+
+    <button type="button"
+            onclick="window.location.href='/Dashboard'">
+        Back to Dashboard
+    </button>
+</form>
+
+</div>

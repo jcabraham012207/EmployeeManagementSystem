@@ -1,0 +1,48 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.SubmittedReportsModel
+@{
+ViewData["Title"] = "Submitted Reports";
+}
+
+<div class="dashboard">
+    <h1>Submitted Reports</h1>
+    <p>View reports submitted by employees in the system.</p>@if (Model.Reports.Count == 0)
+{
+    <div class="report-card">
+        <p>No reports have been submitted yet.</p>
+    </div>
+}
+else
+{
+    @foreach (var report in Model.Reports)
+    {
+        <div class="report-card">
+            <h2>@report.Title</h2>
+
+            <p><strong>Category:</strong> @report.Category</p>
+
+            <p><strong>Submitted by:</strong> @report.SubmittedBy</p>
+
+            <p>
+                <strong>Date:</strong>
+                @report.SubmittedAt.ToString("MMM dd, yyyy hh:mm tt")
+            </p>
+
+            <p><strong>Status:</strong> @report.Status</p>
+
+            <hr />
+
+            <p style="white-space: pre-wrap;">@report.Details</p>
+        </div>
+    }
+}
+
+<button type="button" onclick="window.location.href='/SubmitReport'">
+    Submit a Report
+</button>
+
+<button type="button" onclick="window.location.href='/Dashboard'">
+    Back to Dashboard
+</button>
+
+</div>

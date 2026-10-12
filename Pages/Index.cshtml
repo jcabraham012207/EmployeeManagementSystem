@@ -1,0 +1,50 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.IndexModel
+@{
+    ViewData["Title"] = "Employee Management System";
+}
+
+<div class="login-page">
+    <div class="login-box">
+
+        <h1>YOUR COMPANY NAME</h1>
+        <h2>EMPLOYEE MANAGEMENT SYSTEM</h2>
+
+        <form method="post">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text"
+                       asp-for="Username"
+                       placeholder="Enter username"
+                       required />
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password"
+                       asp-for="Password"
+                       placeholder="Enter password"
+                       required />
+            </div>
+
+            <button class="login-button" type="submit">
+                LOGIN
+            </button>
+
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            Don't have an account?
+            <a href="/Register">Create an account</a>
+        </p>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <p style="text-align: center; margin-top: 15px;">
+                @Model.Message
+            </p>
+        }
+
+    </div>
+</div>

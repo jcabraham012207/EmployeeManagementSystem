@@ -1,0 +1,35 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.EditEmployeeModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="dashboard">
+    <h1>Edit Employee</h1>
+    <p>Update the employee information below.</p>
+
+    <form method="post" class="employee-form">
+
+        <input type="hidden" asp-for="Id" />
+
+        <label>Employee ID</label>
+        <input type="text" asp-for="EmployeeId" />
+
+        <label>Full Name</label>
+        <input type="text" asp-for="FullName" />
+
+        <label>Position</label>
+        <input type="text" asp-for="Position" />
+
+        <label>Department</label>
+        <input type="text" asp-for="Department" />
+
+        <button type="submit">Save Changes</button>
+
+        <button type="button" onclick="window.location.href='/Employees'">
+            Cancel
+        </button>
+
+    </form>
+</div>{
+}

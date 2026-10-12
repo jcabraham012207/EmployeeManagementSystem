@@ -1,0 +1,58 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="login-page">
+    <div class="login-box">
+
+        <h1>CREATE ACCOUNT</h1>
+        <h2>Employee Management System</h2>
+
+        <form method="post">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text"
+                       asp-for="Username"
+                       placeholder="Create username"
+                       required />
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password"
+                       asp-for="Password"
+                       placeholder="Create password"
+                       required />
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password"
+                       asp-for="ConfirmPassword"
+                       placeholder="Confirm password"
+                       required />
+            </div>
+
+            <button class="login-button" type="submit">
+                CREATE ACCOUNT
+            </button>
+
+            <button class="login-button"
+                    type="button"
+                    onclick="window.location.href='/'"
+                    style="margin-top: 10px;">
+                BACK TO LOGIN
+            </button>
+
+        </form>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <p style="margin-top: 20px;">@Model.Message</p>
+        }
+
+    </div>
+</div>

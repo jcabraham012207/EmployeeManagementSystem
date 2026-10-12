@@ -1,0 +1,71 @@
+﻿@page
+@model DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="dashboard">
+    <header class="dashboard-header">
+        <div>
+            <p class="company-label">EMPLOYEE MANAGEMENT SYSTEM</p>
+            <h1>Dashboard</h1>
+            <p class="welcome-text">Welcome back, @Model.Username!</p>
+        </div>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </header>
+
+    <section class="dashboard-intro">
+        <h2>Company Overview</h2>
+        <p>Manage your employees and monitor company records in one place.</p>
+    </section>
+
+    <section class="dashboard-menu">
+    <button type="button" onclick="window.location.href='/Employees'">
+        <span class="menu-icon">01</span>
+        <span class="menu-title">Employees</span>
+        <span class="menu-description">View employee records</span>
+    </button>@if (Model.Role == "Admin")
+{
+    <button type="button" onclick="window.location.href='/AddEmployee'">
+        <span class="menu-icon">02</span>
+        <span class="menu-title">Add Employee</span>
+        <span class="menu-description">Register a new employee</span>
+    </button>
+}
+
+<button type="button" onclick="window.location.href='/Reports'">
+    <span class="menu-icon">03</span>
+    <span class="menu-title">Reports</span>
+    <span class="menu-description">View employee statistics</span>
+</button>
+
+@if (Model.Role == "Admin")
+{
+    <button type="button" onclick="window.location.href='/ActivityLogs'">
+        <span class="menu-icon">04</span>
+        <span class="menu-title">Activity Logs</span>
+        <span class="menu-description">View recorded system activities</span>
+    </button>
+}
+
+<button type="button" onclick="window.location.href='/SubmitReport'">
+    <span class="menu-icon">05</span>
+    <span class="menu-title">Submit a Report</span>
+    <span class="menu-description">Write and submit a workplace report</span>
+</button>
+
+<button type="button" onclick="window.location.href='/SubmittedReports'">
+    <span class="menu-icon">06</span>
+    <span class="menu-title">Submitted Reports</span>
+    <span class="menu-description">View reports submitted by everyone</span>
+</button>
+
+</section>
+
+    <footer class="dashboard-footer">
+        Employee Management System
+    </footer>
+</div>

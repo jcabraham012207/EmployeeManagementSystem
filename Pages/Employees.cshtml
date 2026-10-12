@@ -1,0 +1,89 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.EmployeesModel
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<div class="dashboard">
+    <h1>Employee Records</h1>
+    <p>Manage and view office employee information.</p>
+
+    <div class="employee-actions">
+    <input type="text"
+           id="employeeSearch"
+           placeholder="Search employee..."
+           onkeyup="searchEmployees()" />
+
+    <button type="button" onclick="window.location.href='/AddEmployee'">
+        Add Employee
+    </button>
+</div>
+
+
+    <table class="employee-table">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Full Name</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Action</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+
+        <tbody id="employeeTableBody">
+            @foreach (var employee in Model.Employees)
+            {
+                <tr>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.FullName</td>
+                    <td>@employee.Position</td>
+                    <td>@employee.Department</td>
+
+                    <td>
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="id" value="@employee.Id" />
+                            <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete this employee?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <button type="button"
+                                onclick="window.location.href='/EditEmployee?id=@employee.Id'">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br>
+
+   
+
+    <button onclick="window.location.href='/Dashboard'">
+        Back to Dashboard
+    </button>
+</div>
+
+<script>
+    function searchEmployees() {
+        const search = document.getElementById("employeeSearch").value.toLowerCase();
+        const rows = document.querySelectorAll("#employeeTableBody tr");
+
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+
+            if (text.includes(search)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+</script>

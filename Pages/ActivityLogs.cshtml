@@ -1,0 +1,50 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.ActivityLogsModel
+
+@{
+    ViewData["Title"] = "Activity Logs";
+}
+
+<div class="container mt-4">
+    <h2>Activity Logs</h2>
+    <p class="text-muted">View recorded actions performed in the system.</p>
+
+    <a asp-page="/Dashboard" class="btn btn-secondary mb-3">
+        Back to Dashboard
+    </a>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date and Time</th>
+                    <th>Username</th>
+                    <th>Action</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Logs.Count > 0)
+                {
+                    @foreach (var log in Model.Logs)
+                    {
+                        <tr>
+                            <td>@log.Date.ToString("MMM dd, yyyy hh:mm tt")</td>
+                            <td>@log.Username</td>
+                            <td>@log.Action</td>
+                            <td>@log.Details</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No activity recorded yet.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
